@@ -66,7 +66,7 @@ public class ChatController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    sendChat();
+                    kirimChat();
                 } catch (IOException ex) {
                     Logger.getLogger(ChatController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -76,7 +76,7 @@ public class ChatController {
         this.view.getKirimFile().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sendFile();
+                kirimFile();
             }
         });
     }
@@ -127,7 +127,7 @@ public class ChatController {
         }
     }
 
-    void sendChat() throws IOException {
+    void kirimChat() throws IOException {
         msg = this.view.getPesan().getText();
         byte[] msgByte = msg.getBytes();
         DatagramPacket sendPacket = new DatagramPacket(msgByte, msgByte.length, broadcast, port);
@@ -141,7 +141,7 @@ public class ChatController {
         }
     }
 
-    void sendFile() {
+    void kirimFile() {
         JFileChooser loadFile = view.getLoadFile();
         if (JFileChooser.APPROVE_OPTION == loadFile.showOpenDialog(view)) {
             BufferedInputStream reader = null;
